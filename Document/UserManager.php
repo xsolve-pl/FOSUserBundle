@@ -54,6 +54,14 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritDoc}
      */
+    public function findUserById($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function findUsers()
     {
         return $this->repository->findAll();

@@ -54,6 +54,15 @@ interface UserManagerInterface
     function findUserBy(array $criteria);
 
     /**
+     * Finds one user by its ID
+     *
+     * @SecureReturn(permissions="VIEW")
+     * @param string $id
+     * @return User
+     */
+    function findUserById($id);
+
+    /**
      * Find a user by its username
      * @param   string  $username
      * @return  User or null if user does not exist

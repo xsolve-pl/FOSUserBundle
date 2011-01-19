@@ -90,6 +90,7 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      * It is strongly discouraged to use this method manually as it bypasses
      * all ACL checks.
      *
+     * @RunAs(roles="ROLE_SUPERADMIN")
      * @param AccountInterface $user
      * @return User
      */
@@ -99,7 +100,13 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
             throw new UnsupportedAccountException('Account is not supported.');
         }
 
-        return $this->loadUserByUsername((string) $user);
+        $user = $this->findUserById($user->getId());
+
+        if (!$user) {
+            throw new UsernameNotFoundException(sprintf('No user with ID "%s" was found.', $user->getId()));
+        }
+
+        return $user;
     }
 
     /**
