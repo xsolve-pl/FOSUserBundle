@@ -12,7 +12,7 @@
 
         <field name="email" column="email" type="string" length="255" />
 
-        <field name="emailCanonical" column="email_canonical" type="string" length="255" unique="true" />
+        <field name="emailCanonical" column="email_canonical" type="string" length="255" unique="false" />
 
         <field name="enabled" column="enabled" type="boolean" />
 
